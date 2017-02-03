@@ -62,8 +62,9 @@ public class TwoSampleDebugCallFactory extends AbstractMethodFactory {
 		} else {
 			acOptions.add(new StatisticCalculatorOption(parameters.getStatisticParameters(), getStatistics()));
 		}
-
-		acOptions.add(new StatisticFilterOption(parameters.getStatisticParameters()));
+		
+		int replicates = Math.max(parameters.getReplicates()[0], parameters.getReplicates()[1]);
+		acOptions.add(new StatisticFilterOption(replicates, parameters.getStatisticParameters()));
 
 		acOptions.add(new HelpOption(CLI.getSingleton()));
 	}

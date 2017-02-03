@@ -112,7 +112,9 @@ public class OneSampleCallFactory extends AbstractMethodFactory {
 		acOptions.add(new FilterModusOption(parameters));
 		
 		acOptions.add(new BaseConfigOption(parameters));
-		acOptions.add(new StatisticFilterOption(parameters.getStatisticParameters()));
+		
+		int replicates = parameters.getReplicates()[0];
+		acOptions.add(new StatisticFilterOption(replicates, parameters.getStatisticParameters()));
 		
 		// acOptions.add(new DebugOption(parameters));
 		acOptions.add(new HelpOption(CLI.getSingleton()));

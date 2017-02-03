@@ -210,4 +210,10 @@ public abstract class AbstractParameters implements hasSample1 {
 		return collectLQBCs;
 	}
 	
+	public int[] getReplicates() {
+		int[] replicates = new int[1];
+		replicates[0] = sample1.getPathnames().length;
+		return replicates;
+	}
+
 }
