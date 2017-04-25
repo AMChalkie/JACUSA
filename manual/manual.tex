@@ -312,17 +312,31 @@ See ``Call variant - two samples'' for details.
 \section{Identification of RNA editing sites}
 Use the following command line to identify RNA-DNA differences in BAM files that might give rise to RNA editing sites:
 \begin{verbatim}
-java -jar call-2 -r JACUSA.out -s -a H:1 gDNA.bam cDNA.bam
+java -jar call-2 -r JACUSA.out -T 1.15 -s -a H:1 gDNA.bam cDNA.bam
 \end{verbatim}
+
+\noindent
 Option ``-a H:1'' ensures that potential polymorphisms in gDNA will be eliminated as artefacts. The number $x \in \{1, 2\}$
 determines which sample has to be homomorph - in this case: gDNA.bam.
-
+\\\\\
+\noindent
+Option ``-T 1.15'' filters the potential variants based on the test-teststatic.
+\\\\
+\noindent
+WARNING: ``-T'' depends on the type of comparison and the number of replicates.
+Check \url{https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-1432-8} and supplement for details.
+\\\\
+\noindent
 Use the following command line to identify RNA-DNA differences:
 \begin{verbatim}
-java -jar call-2 -r JACUSA.out -s cDNA1.bam cDNA2.bam
+java -jar call-2 -r JACUSA.out -T 1.22 -s cDNA1.bam cDNA2.bam
 \end{verbatim}
+
+\noindent
 WARNING: If you want to identify RNA-RNA differences make sure NOT to use the filter ``-a H:x''! Otherwise, potential valid variants will be filtered out. 
 
+%\subsection{Filtering based on test-statisic}
+ 
 %--------------------------------------------------------------------------------------------------
 \section{Used libraries}
 picard tools
